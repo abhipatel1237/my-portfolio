@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Abhay Patel | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <h2 class="logo">Abhay.</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <p class="welcome">WELCOME TO MY PORTFOLIO</p>
+        <h1>Hi, I'm <span>Abhay Patel</span></h1>
+        <h2>Web Developer</h2>
+        <p class="description">
+            I create websites and explore new technologies.
+        </p>
+        <a href="#projects" class="hero-btn">
+            View My Projects
+        </a>
+    </section>
+
+    <!-- About -->
+    
+<section class="content-section" id="about">
+    <h2>About Me</h2>
+    <h3>I'm Abhay Patel</h3>
+    <h4>i am coder  </h4>
+    <h5> my qualification ; 10th standrad </h5>
+    <p>
+        I'm passionate about web development
+        and technology.
+    </p>
+
+<section class="content-section" id="projects">
+    <h2>My Projects</h2>
+    <p class="project-intro">
+        Here are some of my projects.
+    </p>
+
+    <div class="project-container">
+
+        
+<div class="project-card">
+    <h3>TruthLens AI</h3>
+    <p>
+        An AI-powered tool to help identify
+        AI-generated images.
+    </p>
+    <span>Python | Flask | AI</span>
+    <br><br>
+    <a href="https://truthlens-ai-ja7w.onrender.com"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="project-link">
+        Visit Project ↗
+    </a>
+</div>
+
+        <div class="project-card">
+            <h3>Personal Portfolio</h3>
+            <p>
+                My personal website to showcase
+                my skills and projects.
+            </p>
+            <span>HTML | CSS | JavaScript</span>
+        </div>
+
+        <div class="project-card">
+            <h3>Upcoming Project</h3>
+            <p>
+                A new project I'm planning
+                to build.
+            </p>
+            <span>Coming Soon</span>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Contact -->
+    
+<section class="content-section" id="contact">
+    <h2>Contact Me</h2>
+    <p>Have a question? Send me a message.</p>
+
+    <form id="contact-form" class="contact-form">
+        <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+        >
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+        >
+
+        <textarea
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            required
+        ></textarea>
+
+        <button type="submit" id="send-btn">
+            Send Message
+        </button>
+        <p id="form-status" aria-live="polite"></p>
+    </form>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+    emailjs.init({
+        publicKey: "G73ToWrrqnhHNRMAD"
+    });
+
+    const form = document.getElementById("contact-form");
+    const button = document.getElementById("send-btn");
+    const status = document.getElementById("form-status");
+
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        button.disabled = true;
+        button.textContent = "Sending...";
+        status.textContent = "";
+
+        try {
+            await emailjs.sendForm(
+                "service_abhay",
+                "template_abhay",
+                form
+            );
+
+            status.textContent = "Message sent successfully!";
+            status.style.color = "#4ade80";
+            form.reset();
+        } catch (error) {
+            status.textContent = "Message could not be sent. Please try again.";
+            status.style.color = "#f87171";
+        } finally {
+            button.disabled = false;
+            button.textContent = "Send Message";
+        }
+    });
+</script>
+
+</body>
+</html>
